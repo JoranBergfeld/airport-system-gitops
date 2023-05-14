@@ -1,0 +1,29 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: flight-scheduler
+  namespace: airport-system
+  labels:
+    app: flight-scheduler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flight-scheduler
+  template:
+    metadata:
+      labels:
+        app: flight-scheduler
+    spec:
+      containers:
+        - name: flight-scheduler
+          image: ghcr.io/joranbergfeld/airport-system-flight-scheduler/flight-scheduler:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources: { }
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%

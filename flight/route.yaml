@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: flight
+  name: flight
+  namespace: airport-system
+spec:
+  port:
+    targetPort: 9003-tcp
+  to:
+    kind: Service
+    name: flight
+    weight: 100

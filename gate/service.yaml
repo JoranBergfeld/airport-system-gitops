@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: gate
+  name: gate
+  namespace: airport-system
+spec:
+  ports:
+    - name: 9001-tcp
+      port: 9001
+      protocol: TCP
+      targetPort: 900
+  selector:
+    app: gate
+  sessionAffinity: None
+  type: ClusterIP
