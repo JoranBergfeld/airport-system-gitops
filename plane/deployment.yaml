@@ -21,7 +21,26 @@ spec:
           ports:
             - containerPort: 9000
               protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: plane-app-config-map
+            - secretRef:
+                name: plane-app-secret
+          
           resources: { }
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: /actuator/health/liveness          
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: /actuator/health/liveness
+          # Application is configured for graceful shutdowns, so leave the app 10 seconds to handle current requests.
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sh", "-c", "sleep 10"]
   strategy:
     type: RollingUpdate
     rollingUpdate:
