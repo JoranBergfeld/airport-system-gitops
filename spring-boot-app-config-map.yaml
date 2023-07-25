@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: plane-app-config-map
+  name: spring-boot-app-config-map
   namespace: airport-system
 data:
   LOGGING_LEVEL_ORG_SPRINGFRAMEWORK: INFO
