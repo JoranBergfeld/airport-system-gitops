@@ -5,6 +5,7 @@ metadata:
   namespace: airport-system
   labels:
     app: plane
+    application-system: airport-system
 spec:
   replicas: 1
   selector:
@@ -19,14 +20,13 @@ spec:
         - name: plane
           image: ghcr.io/joranbergfeld/airport-system-plane/plane:latest
           ports:
-            - containerPort: 9000
+            - containerPort: 8080
               protocol: TCP
           envFrom:
             - configMapRef:
-                name: plane-app-config-map
+                name: spring-boot-app-config-map
             - secretRef:
-                name: plane-app-secret
-          
+                name: spring-boot-database-credentials-secret
           resources: { }
           readinessProbe:
             httpGet:

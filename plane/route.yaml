@@ -3,11 +3,12 @@ kind: Route
 metadata:
   labels:
     app: plane
+    application-system: airport-system
   name: plane
   namespace: airport-system
 spec:
   port:
-    targetPort: 9000-tcp
+    targetPort: 8080-tcp
   to:
     kind: Service
     name: plane

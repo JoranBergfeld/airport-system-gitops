@@ -3,14 +3,15 @@ kind: Service
 metadata:
   labels:
     app: airliner
+    application-system: airport-system
   name: airliner
   namespace: airport-system
 spec:
   ports:
-    - name: 9002-tcp
-      port: 9002
+    - name: 8080-tcp
+      port: 8080
       protocol: TCP
-      targetPort: 9002
+      targetPort: 8080
   selector:
     app: airliner
   sessionAffinity: None

@@ -5,6 +5,7 @@ metadata:
   namespace: airport-system
   labels:
     app: gate
+    application-system: airport-system
 spec:
   replicas: 1
   selector:
@@ -19,8 +20,27 @@ spec:
         - name: gate
           image: ghcr.io/joranbergfeld/airport-system-gate/gate:latest
           ports:
-            - containerPort: 9001
-              protocol: TCP
+            - containerPort: 8080
+              protocol: TCP 
+          envFrom:
+            - configMapRef:
+                name: spring-boot-app-config-map
+            - secretRef:
+                name: spring-boot-database-credentials-secret
+          resources: { }
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: /actuator/health/liveness          
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: /actuator/health/liveness
+          # Application is configured for graceful shutdowns, so leave the app 10 seconds to handle current requests.
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sh", "-c", "sleep 10"]
           resources: { }
   strategy:
     type: RollingUpdate

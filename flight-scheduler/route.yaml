@@ -3,6 +3,7 @@ kind: Route
 metadata:
   labels:
     app: flight-scheduler
+    application-system: airport-system
   name: flight-scheduler
   namespace: airport-system
 spec:
