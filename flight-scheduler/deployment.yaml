@@ -25,6 +25,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: spring-boot-app-config-map
+            - configMapRef:
+                name: flight-scheduler-config-map    
             - secretRef:
                 name: spring-boot-database-credentials-secret
           resources: { }
