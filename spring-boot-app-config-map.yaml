@@ -5,5 +5,5 @@ metadata:
   namespace: airport-system
 data:
   LOGGING_LEVEL_ORG_SPRINGFRAMEWORK: INFO
-  SPRING_DATASOURCE_URL: jdbc:postgresql://hippo-ha-pgbouncer.postgres.svc:5432/hippo
+  SPRING_DATASOURCE_URL: jdbc:postgresql://cluster-sample-rw.postgres.svc:5432/app
   SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
