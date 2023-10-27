@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: flight-scheduler-config-map
+  name: arrival-config-map
   namespace: airport-system
 data:
   APP_PLANE_CLIENT_URL: plane-app
@@ -10,5 +10,3 @@ data:
   APP_GATE_CLIENT_PORT: "8080"
   APP_AIRLINER_CLIENT_URL: airliner-app
   APP_AIRLINER_CLIENT_PORT: "8080"
-  APP_FLIGHT_CLIENT_URL: flight-app
-  APP_FLIGHT_CLIENT_PORT: "8080"

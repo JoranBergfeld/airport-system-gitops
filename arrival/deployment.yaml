@@ -1,30 +1,32 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: flight
+  name: arrival
   namespace: airport-system
   labels:
-    app: flight
+    app: arrival
     application-system: airport-system
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: flight
+      app: arrival
   template:
     metadata:
       labels:
-        app: flight
+        app: arrival
     spec:
       containers:
-        - name: flight
-          image: ghcr.io/joranbergfeld/airport-system-flight/flight:latest
+        - name: arrival
+          image: ghcr.io/joranbergfeld/airport-system-arrival/arrival:latest
           ports:
             - containerPort: 8080
               protocol: TCP
           envFrom:
             - configMapRef:
                 name: spring-boot-app-config-map
+            - configMapRef:
+                name: arrival-config-map    
             - secretRef:
                 name: spring-boot-database-credentials-secret
           resources: { }
