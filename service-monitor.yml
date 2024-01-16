@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    prometheus-scraping: spring-boot-actuator
+  name: spring-boot-actuator-monitor
+  namespace: airport-system
+spec:
+  endpoints:
+    - interval: 30s
+      path: /actuator/prometheus
+      port: 8080-tcp
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      prometheus-scraping: spring-boot-actuator

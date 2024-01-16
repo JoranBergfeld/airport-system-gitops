@@ -6,6 +6,7 @@ metadata:
   labels:
     app: airliner
     application-system: airport-system
+    prometheus-scraping: spring-boot-actuator
 spec:
   replicas: 3
   selector:
