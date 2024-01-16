@@ -8,3 +8,4 @@ metadata:
 data:
   LOGGING_LEVEL_ORG_SPRINGFRAMEWORK: INFO
   SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
+  MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: health, liveness-state, readiness-state, prometheus
