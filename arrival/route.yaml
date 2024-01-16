@@ -13,3 +13,6 @@ spec:
     kind: Service
     name: arrival
     weight: 100
+  tls:
+    termination: passthrough
+    insecureEdgeTerminationPolicy: Redirect
