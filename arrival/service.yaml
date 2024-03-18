@@ -3,6 +3,8 @@ kind: Service
 metadata:
   labels:
     app: arrival
+    application-system: airport-system
+    prometheus-scraping: spring-boot-actuator
   name: arrival
   namespace: airport-system
 spec:

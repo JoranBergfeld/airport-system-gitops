@@ -2,6 +2,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
+    application-system: airport-system
     prometheus-scraping: spring-boot-actuator
   name: spring-boot-actuator-monitor
   namespace: airport-system

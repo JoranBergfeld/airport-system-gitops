@@ -4,6 +4,7 @@ metadata:
   labels:
     app: plane
     application-system: airport-system
+    prometheus-scraping: spring-boot-actuator
   name: plane
   namespace: airport-system
 spec:

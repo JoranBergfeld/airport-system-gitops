@@ -15,7 +15,6 @@ spec:
     metadata:
       labels:
         app: gate
-        prometheus-scraping: spring-boot-actuator
     spec:
       containers:
         - name: gate
