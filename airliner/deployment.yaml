@@ -6,7 +6,6 @@ metadata:
   labels:
     app: airliner
     application-system: airport-system
-    prometheus-scraping: spring-boot-actuator
 spec:
   replicas: 1
   selector:
@@ -16,6 +15,7 @@ spec:
     metadata:
       labels:
         app: airliner
+        prometheus-scraping: spring-boot-actuator
     spec:
       containers:
         - name: airliner

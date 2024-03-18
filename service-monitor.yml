@@ -11,7 +11,8 @@ spec:
       path: /actuator/prometheus
       port: 8080-tcp
   namespaceSelector:
-    any: true
+    matchNames:
+      - airport-system
   selector:
     matchLabels:
       prometheus-scraping: spring-boot-actuator
