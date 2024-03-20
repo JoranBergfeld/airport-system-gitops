@@ -1,0 +1,51 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: air-traffic-manager
+  namespace: airport-system
+  labels:
+    app: air-traffic-manager
+    application-system: airport-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: air-traffic-manager
+  template:
+    metadata:
+      labels:
+        app: air-traffic-manager
+    spec:
+      containers:
+        - name: air-traffic-manager
+          image: ghcr.io/joranbergfeld/airport-system-air-traffic-control/air-traffic-manager:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: spring-boot-app-config-map
+            - configMapRef:
+                name: air-traffic-manager-config-map    
+            - secretRef:
+                name: spring-boot-database-credentials-secret
+          resources: { }
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: /actuator/health/liveness          
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: /actuator/health/liveness
+          # Application is configured for graceful shutdowns, so leave the app 10 seconds to handle current requests.
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sh", "-c", "sleep 10"]
+          resources: { }
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%

@@ -1,0 +1,18 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: air-traffic-manager
+    application-system: airport-system
+  name: air-traffic-manager
+  namespace: airport-system
+spec:
+  port:
+    targetPort: 8080-tcp
+  to:
+    kind: Service
+    name: air-traffic-manager
+    weight: 100
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
