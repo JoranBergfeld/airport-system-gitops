@@ -4,9 +4,9 @@ metadata:
   name: arrival-config-map
   namespace: airport-system
 data:
-  APP_PLANE_CLIENT_URL: plane-app
+  APP_PLANE_CLIENT_URL: plane
   APP_PLANE_CLIENT_PORT: "8080"
-  APP_GATE_CLIENT_URL: gate-app
+  APP_GATE_CLIENT_URL: gate
   APP_GATE_CLIENT_PORT: "8080"
-  APP_AIRLINER_CLIENT_URL: airliner-app
+  APP_AIRLINER_CLIENT_URL: airliner
   APP_AIRLINER_CLIENT_PORT: "8080"

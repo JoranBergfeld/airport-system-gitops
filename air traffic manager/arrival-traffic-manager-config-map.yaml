@@ -4,9 +4,9 @@ metadata:
   name: air-traffic-manager-config-map
   namespace: airport-system
 data:
-  APP_PLANE_CLIENT_URL: plane-app
+  APP_PLANE_CLIENT_URL: plane
   APP_PLANE_CLIENT_PORT: "8080"
-  APP_ARRIVAL_CLIENT_URL: arrival-app
+  APP_ARRIVAL_CLIENT_URL: arrival
   APP_ARRIVAL_CLIENT_PORT: "8080"
-  APP_AIRLINER_CLIENT_URL: airliner-app
+  APP_AIRLINER_CLIENT_URL: airliner
   APP_AIRLINER_CLIENT_PORT: "8080"
