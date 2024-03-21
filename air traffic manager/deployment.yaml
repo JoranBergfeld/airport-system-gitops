@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: air-traffic-manager
-          image: ghcr.io/joranbergfeld/airport-system-air-traffic-control/air-traffic-manager:latest
+          image: ghcr.io/joranbergfeld/airport-system-air-traffic-control/air-traffic-control:latest
           ports:
             - containerPort: 8080
               protocol: TCP
